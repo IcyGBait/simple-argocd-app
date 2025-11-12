@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: pythontest
-          image: YOUR_JFROG_REGISTRY/YOUR_REPO/pythontest:latest
+          image: mzazontrial.jfrog.io/docker-local/pythontest:latest
           ports:
             - containerPort: 3000
           resources:
