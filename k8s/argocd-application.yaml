@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/IcyGBait/simple-argocd-app'      # <-- replace with your git repo URL (https or ssh)
+    repoURL: 'https://github.com/IcyGBait/simple-argocd-app.git' # Git repo URL
     targetRevision: HEAD
     path: k8s
   destination:
