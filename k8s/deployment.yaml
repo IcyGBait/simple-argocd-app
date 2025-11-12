@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythontest-deployment
+  namespace: pythontest
+  labels:
+    app: pythontest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pythontest
+  template:
+    metadata:
+      labels:
+        app: pythontest
+    spec:
+      containers:
+        - name: pythontest
+          image: YOUR_JFROG_REGISTRY/YOUR_REPO/pythontest:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
